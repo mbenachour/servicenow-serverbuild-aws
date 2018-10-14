@@ -1,0 +1,38 @@
+service: srvcnow-aws-server-build
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+plugins:
+  - serverless-basic-authentication
+  - serverless-python-requirements
+
+provider:
+  name: aws
+  runtime: python2.7
+  apiKeys:
+    - apikey1
+  #endpointType: private
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ec2:*
+        - apigateway:*
+      Resource: "*"
+
+functions:
+  build:
+    handler: handler.build
+    events:
+      - http:
+          path: instance
+          method: post
+          cors: true
+          private: true
+
+          #integration: lambda
+          # authorizer: 
+          #   arn: arn:aws:cognito-idp:us-east-1:448523771025:userpool/us-east-1_gNHFldLfG
+          #   claims:
+          #     - email
+
+
