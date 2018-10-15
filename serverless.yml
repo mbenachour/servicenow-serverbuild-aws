@@ -29,10 +29,6 @@ functions:
           cors: true
           private: true
 
-          #integration: lambda
-          # authorizer: 
-          #   arn: arn:aws:cognito-idp:us-east-1:448523771025:userpool/us-east-1_gNHFldLfG
-          #   claims:
-          #     - email
+
 
 
